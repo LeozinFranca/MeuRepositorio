@@ -1,4 +1,8 @@
 
+<!DOCTYPE html>
+<html>
+<body>
+
 <?php
 
 function linha($semana)
@@ -29,11 +33,23 @@ function linha($semana)
 	echo "</tr>";
 }
 
-function calendario()
+
+
+function calendario($diaM)
 {
+    echo '<table border="1">
+	<tr>
+		<th>Seg</th>
+		<th>Ter</th>
+		<th>Qua</th>
+		<th>Qui</th>
+		<th>Sex</th>
+		<th>Sáb</th>
+        <th>Dom</th>
+	</tr>';
 	$dia = 1;
 	$semana = array();
-	while ($dia <= 31) {
+	while ($dia <= $diaM) {
 		array_push($semana, $dia);
 		if (count($semana) == 7) {
 			linha($semana);
@@ -42,6 +58,87 @@ function calendario()
 		$dia++;
 	}
 	linha($semana);
+}
+
+
+function calendario_anual(){
+    for($i = 0; $i <= 12; $i++){
+      if($i==0){
+         calendario(31);
+         echo"";
+         echo"";
+      }
+      if($i==0){
+         echo"<H2>Janeiro</H2>";
+         calendario(28);
+         echo"";
+         echo"";
+      }
+      if($i==1){
+         echo"<H2>Fevereiro</H2>";
+         calendario(31);
+         echo"";
+         echo"";
+      }
+      if($i==2){
+         echo"<H2>Março</H2>";
+         calendario(30);
+         echo"";
+         echo"";
+      }
+      if($i==3){
+         echo"<H2>Abril</H2>";
+         calendario(31);
+         echo"";
+         echo"";
+      }
+      if($i==4){
+         echo"<H2>Maio</H2>";
+         calendario(30);
+         echo"";
+         echo"";
+      }
+      if($i==5){
+         echo"<H2>Junho</H2>";
+         calendario(31);
+         echo"";
+         echo"";
+      }
+      if($i==6){
+         echo"<H2>Julho</H2>";
+         calendario(31);
+         echo"";
+         echo"";
+      }
+      if($i==7){
+         echo"<H2>Agosto</H2>";
+         calendario(30);
+         echo"";
+         echo"";
+      }
+      if($i==8){
+         echo"<H2>Setembro</H2>";
+         calendario(31);
+         echo"";
+         echo"";
+      }
+      if($i==9){
+         echo"<H2>Outubro</H2>";
+         calendario(30);
+         echo"";
+         echo"";
+      }
+      if($i==10){
+         echo"<H2>Novembro</H2>";
+         calendario(31);
+         echo"";
+         echo"";
+      }
+      if($i==11){
+         echo"<H2>Dezembro</H2>";
+         
+      }  
+    } 
 }
 
 function saudacao(){
@@ -59,18 +156,7 @@ function saudacao(){
    }
 }
 ?>
-
-<table border="1">
-	<tr>
-		<th>Seg</th>
-		<th>Ter</th>
-		<th>Qua</th>
-		<th>Qui</th>
-		<th>Sex</th>
-		<th>Sáb</th>
-      <th>Dom</th>
-	</tr>
-	<?php calendario(); ?>
-</table>
-<?php saudacao(); ?>
-
+     <?php saudacao(); ?>
+    <?php calendario_anual()?>
+</body>
+</html>
