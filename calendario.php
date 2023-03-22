@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <body>
@@ -35,7 +34,7 @@ function linha($semana)
 
 
 
-function calendario($nomeMes, $diaMes){
+function calendario($nomeMes, $diaMes, $finalS){
     echo 
      "$nomeMes
     <table border='1'>
@@ -50,13 +49,18 @@ function calendario($nomeMes, $diaMes){
 	</tr>";
 	$dia = 1;
 	$semana = array();
-	while ($dia <= $diaMes) {
-		array_push($semana, $dia);
-		if (count($semana) == 7) {
-			linha($semana);
-			$semana = array();
-		}
-		$dia++;
+	while ($dia <= $diaMes + $finalS) {
+        if($dia<=$finalS){
+           array_push($semana, " "); 
+        }
+        else{
+		   array_push($semana, ($dia-$finalS));
+        }
+		   if (count($semana) == 7) {
+			  linha($semana);
+			  $semana = array();
+	    }
+        $dia++;
 	}
 	linha($semana);
     echo "</table>";
@@ -78,7 +82,11 @@ function calendario_anual(){
     for($i = 0; $i <= 11; $i++){
       $nomeM = GetNameM($i);
       $diaM = GetDiaM($i);
-      calendario($nomeM ,$diaM);
+      if($i == 0){
+        $finalS = 0;
+      }
+      calendario($nomeM ,$diaM, $finalS);
+      $finalS = ($diaM%7);
     } 
 }
 
