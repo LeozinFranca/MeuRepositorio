@@ -82,11 +82,10 @@ function calendario_anual(){
     for($i = 0; $i <= 11; $i++){
       $nomeM = GetNameM($i);
       $diaM = GetDiaM($i);
-      if($i == 0){
-        $finalS = 0;
-      }
+      $final = array(0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5, 1);
+      $finalS = $final[$i];
       calendario($nomeM ,$diaM, $finalS);
-      $finalS = ($diaM%7);
+      
     } 
 }
 
