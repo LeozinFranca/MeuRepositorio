@@ -35,9 +35,10 @@ function linha($semana)
 
 
 
-function calendario($diaM)
-{
-    echo '<table border="1">
+function calendario($nomeMes, $diaMes){
+    echo 
+     "$nomeMes
+    <table border='1'>
 	<tr>
 		<th>Seg</th>
 		<th>Ter</th>
@@ -46,10 +47,10 @@ function calendario($diaM)
 		<th>Sex</th>
 		<th>Sáb</th>
         <th>Dom</th>
-	</tr>';
+	</tr>";
 	$dia = 1;
 	$semana = array();
-	while ($dia <= $diaM) {
+	while ($dia <= $diaMes) {
 		array_push($semana, $dia);
 		if (count($semana) == 7) {
 			linha($semana);
@@ -58,86 +59,26 @@ function calendario($diaM)
 		$dia++;
 	}
 	linha($semana);
+    echo "</table>";
+}
+
+function GetNameM($Mes){
+  $nomeM = array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro");
+  
+  return $nomeM[$Mes];
+}
+
+function GetDiaM($Mes){
+  $diaM = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+  return $diaM[$Mes];
 }
 
 
 function calendario_anual(){
-    for($i = 0; $i <= 12; $i++){
-      if($i==0){
-         calendario(31);
-         echo"";
-         echo"";
-      }
-      if($i==0){
-         echo"<H2>Janeiro</H2>";
-         calendario(28);
-         echo"";
-         echo"";
-      }
-      if($i==1){
-         echo"<H2>Fevereiro</H2>";
-         calendario(31);
-         echo"";
-         echo"";
-      }
-      if($i==2){
-         echo"<H2>Março</H2>";
-         calendario(30);
-         echo"";
-         echo"";
-      }
-      if($i==3){
-         echo"<H2>Abril</H2>";
-         calendario(31);
-         echo"";
-         echo"";
-      }
-      if($i==4){
-         echo"<H2>Maio</H2>";
-         calendario(30);
-         echo"";
-         echo"";
-      }
-      if($i==5){
-         echo"<H2>Junho</H2>";
-         calendario(31);
-         echo"";
-         echo"";
-      }
-      if($i==6){
-         echo"<H2>Julho</H2>";
-         calendario(31);
-         echo"";
-         echo"";
-      }
-      if($i==7){
-         echo"<H2>Agosto</H2>";
-         calendario(30);
-         echo"";
-         echo"";
-      }
-      if($i==8){
-         echo"<H2>Setembro</H2>";
-         calendario(31);
-         echo"";
-         echo"";
-      }
-      if($i==9){
-         echo"<H2>Outubro</H2>";
-         calendario(30);
-         echo"";
-         echo"";
-      }
-      if($i==10){
-         echo"<H2>Novembro</H2>";
-         calendario(31);
-         echo"";
-         echo"";
-      }
-      if($i==11){
-         echo"<H2>Dezembro</H2>";
-         
-      }  
+    for($i = 0; $i <= 11; $i++){
+      $nomeM = GetNameM($i);
+      $diaM = GetDiaM($i);
+      calendario($nomeM ,$diaM);
     } 
 }
 
@@ -155,8 +96,9 @@ function saudacao(){
       echo("<H1>Boa noite</H1>");
    }
 }
-?>
-     <?php saudacao(); ?>
-    <?php calendario_anual()?>
+?>  
+    <?php saudacao(); ?>
+    <?php calendario_anual();?>
+     
 </body>
 </html>
